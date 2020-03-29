@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Automated Puzzle Difficulty Estimation</title>
+</head>
+<body>
+  <h1>Document</h1>
+    <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7317913">Paper here!</a>
+  <h1>Notes</h1>
+    <h2>My own footnotes</h2>
+      <ol>
+        <li>Automatically rates the difficulty of puzzle games. Ours will be puzzle levels, too. So, that's nice.</li>
+        <li>Training the difficulty function seems time consuming and may be hard for me at this level.</li>
+        <li>Their games are harder to assess with respect to ours.
+          <ul>
+            <li>They have nice design of games, could salvage this.</li>
+            <li>Our difficulty function will be easier to design and evolve with respect to theirs.</li>
+          </ul>
+        </li>
+        <li>Whole level is the input of the difficulty function. That's probably the nicer approach.</li>
+        <li>Most of the studies includes time to solve puzzles. However, this does not reflect on difficulty, at least fully.</li>
+        <li>Most of the related work require a user study, that means I may need to learn how statistics work and how to conduct questionnaires.</li>
+        <li>
+          Some variables they use - only the ones that we can use -
+          <ul>
+            <li>Level size</li>
+            <li>Average distance between goal and avatar</li>
+            <li>Movable tiles</li>
+            <li>Number of counter-intuitive moves.(Moves that are made in order to win that increases distance between goal and avatar)</li>
+          </ul>
+        </li>
+        <li>They used web to conduct their user study. I am not sure if I can serve my game over web if it comes to this.</li>
+      </ol>
+    <h2>A brief summary</h2>
+      <ul>
+        <li>
+          Abstract
+          <ul>
+            <li>Combines multiple aspects of the levels to rate, as a difficulty function.</li>
+            <li>Tested on Flow, Lazors, and Move. Links to these games may appear here.</li>
+            <li>They conducted user studies to train their difficulty function.</li>
+            <li>Finally, they have an error rate of 0.5 to 1 on a scale of 10.</li>
+          </ul>
+        </li>
+        <li>
+          Introduction
+          <ul>
+            <li>They see this work as a facilitator for a faster & more accurate level creation pipeline.</li>
+            <li>Since it is hard to determine what can be important in assessment, they use whole level as input to the difficulty function.</li>
+            <li>Difficulty function is trained against the average score of the conducted user study.</li>
+            <li>Difficulty function also can be used to understand what makes a level harder.</li>
+            <li>
+              Here are their games:
+              <ul>
+                <li>Flow: the player connects pairs of equal-colored dots with non-intersecting paths.</li>
+                <li>Lazors: the player moves mirrors to direct laser-beams to hit certain targets.</li>
+                <li>Move: the player moves a set of colored balls to their matching positions.</li>
+              </ul>
+            </li>
+            <li>Since the games are so different in between, they expect their difficulty function to work on many other abstract puzzle games.</li>
+          </ul>
+        </li>
+        <li>
+          Related Work
+          <ul>
+            <li>
+              D. Ashlock and J. Schonfeld, “Evolution for automatic assessment of the difficulty of Sokoban boards”
+              <ul>
+                <li>Assess by solving. Uses time to solve and sum of failed attempts.</li>
+              </ul>
+            </li>
+            <li>
+              T. Mantere and J. Koljonen, “Solving, rating and generating Sudoku puzzles with GA”
+              <ul>
+                <li>Genetic algorithms to solve, generate, and rate.</li>
+                <li>Assumes if it is hard to genetic solver, it is hard for people. This assumption got support from the paper.</li>
+              </ul>
+            </li>
+            <li>
+              P. Jaruˇsek and R. Pel ́anek, “Difficulty rating of Sokoban puzzle”
+              <ul>
+                <li>Works on human factor explicitly.</li>
+              </ul>
+            </li>
+            <li>
+              C. Browne "Evolutionary Game Design"
+              <ul>
+                <li>Using a user study, author tries to reach enjoyable features for a board game.</li>
+                <li>Then an evolutionary algorithm generates a board game called "Yavalath" out of it.</li>
+              </ul>
+            </li>
+            <li>
+              M.-V. Aponte, G. Levieux, and S. Natkin, “Measuring the level of difficulty in single player video games”
+              <ul>
+                <li>A game is a series of challanges that all has a probability to success.</li>
+              </ul>
+            </li>
+            <li>
+              S. Andr ́as, K. Sipos, and A. S ́oos, “Which is harder?-classification of happy cube puzzles”
+              <ul>
+                <li>Yet another user study.</li>
+              </ul>
+            </li>
+            <li>
+              M. Guid and I. Bratko, “Search-based estimation of problem difficulty for humans”
+              <ul>
+                <li>Estimate chess puzzles' difficulties based on searching between alternatives.</li>
+              </ul>
+            </li>
+            <li>
+              J. Taylor and I. Parberry, “Procedural generation of sokoban levels”
+            </li>
+          </ul>
+        </li>
+        <li>
+          Difficulty Estimation
+          <ol>
+            <li>
+              Choosing Variables
+              <ul>
+                <li>They say this is a trial&error process.</li>
+                <li>Also, the number of variables and ease of measurement is a variance in choosing.</li>
+                <li>It is mentioned that 4-7 variables are OK for a good estimate.</li>
+              </ul>
+            </li>
+            <li>
+              Models
+              <ul>
+                <li>It is both possible to isolate variables and find their weights, or fine-tune all of them at the same time.</li>
+                <li>Since first seems easier, this is the chosen approach here(Occams's razor).</li>
+                <li>
+                  Exact difficulty function is <b>Diff(L) = w_0 + Sum(w_i * v_i)[i=1 to i=n]</b>
+                  <ul>
+                    <li>w_0 is the base difficulty.</li>
+                    <li>w_i is the weight of i_th factor.</li>
+                    <li>v_i is the value of i_th factor.</li>
+                    <li>n is the number of factors.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Determining the Weights
+              <ul>
+                <li>A linear program is used to determine the weights, using a dataset gathered from a user study.</li>
+              </ul>
+            </li>
+          </ol>
+        </li>
+        <li>
+          User Study
+          <ul>
+            <li>Served games over web.</li>
+            <li>The number of participants is funny. 86, 105, 57 for three games, respectively.</li>
+          </ul>
+        </li>
+      </ul>
+      <a href=../index.html>Go back to main page</a>
+</body>
+</html>

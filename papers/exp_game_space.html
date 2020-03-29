@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exploring Game Space of Minimal Action Games via Parameter Tuning and Survival Analysis</title>
+  </head>
+  <body>
+    <h1>Document</h1>
+      <a href="https://ieeexplore.ieee.org/abstract/document/8030128">Paper here!<a>
+    <h1>Notes</h1>
+      <h2>My own footnotes</h2>
+        <ol>
+          <li></li>
+        </ol>
+      <h2>A brief summary</h2>
+        <ul>
+          <li>
+            Abstract
+            <ul>
+              <li>Analysis of how to fine-tune parameters of a game for optimal difficulty.</li>
+              <li>Works on a parameterized version of Flappy Bird.</li>
+              <li>An automated player with human motor skills plays for a Monte Carlo simulation. Score histograms are worked on.</li>
+            </ul>
+          </li>
+          <li>
+            Introduction
+            <ul>
+              <li>Traditional game design: Iterative manner. Design, play-test, get feedback, repeat.</li>
+              <li>Purpose of the work is to automate this cycle without human testers.</li>
+              <li>All parameters in game creates another dimension. This high-dimensional space is called game space. All points in game space are unique designs.</li>
+              <li>The reason of game choice is to have less parameters to tune.</li>
+              <li>Score probability distribution is a nice to have since it is both quantitative and easy to analyze.</li>
+              <li>Survival analysis provides a well-defined hazard rate.</li>
+            </ul>
+          </li>
+          <li>
+            Related Work
+            <ul>
+              <li>TODO</li>
+            </ul>
+          </li>
+          <li>
+            Flappy Bird Game Space
+            <ul>
+              <li>Measured difficulty h(x) is probabilty of fail, given that score x is already reached. Called hazard rate.</li>
+              <li>
+                Even a simple game like Flappy Bird has lots of parameters:
+                <ol>
+                  <li>World height</li>
+                  <li>Pipe gap location range: vertical distance between lower pipe in the obstacle before and upper pipe in next.</li>
+                  <li>Pipe gap</li>
+                  <li>Pipe seperation</li>
+                  <li>Pipe width</li>
+                  <li>Gravity</li>
+                  <li>Bird size</li>
+                  <li>Bird velocity</li>
+                  <li>Bird jump velocity</li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Player Model
+            <ul>
+              <li>
+                Player Precision
+                <ul>
+                  <li>This is how you deviate when you plan to press a button.</li>
+                  <li>Standard deviation here is minimum 35.9 ms to 61.1 ms</li>
+                  <li>When a button needs to be pressed at time T, they press it in t+€, where € is a random that is pulled from a normal distribution with 0 mean and the given standard deviation.</li>
+                  <li>stdev=0 tests if level is playable, =35.9 is an expert player, =61.1 is a novice player</li>
+                </ul>
+              </li>
+              <li>
+                Actions Per Second and Reaction Time
+                <ul>
+                  <li>A person should have 7.7 actions in a second at maximum.</li>
+                  <li>When a change happens on the screen, it takes 288 ms to react, like a person.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Survival Analysis
+            <ul>
+              <li>f(x) is the probability distribution function. This is the probability of getting x as points in the game.</li>
+              <li>S(x) is surviving through point greater or equal to x.</li>
+              <li>Hazard function is h(x)=f(x)/S(x)</li>
+              <li>If h(x) = undefined, game is unwinnable</li>
+            </ul>
+          </li>
+          <li>
+            Method for Estimating Hazard Rates
+            <ul>
+              <li>
+                Steps:
+                <ol>
+                  <li>Generate a game by parameters</li>
+                  <li>Simulate</li>
+                  <li>Analyze the histogram</li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Hazard Rate Analysis of Simulated Games
+            <ol>
+              <li>Constant Difficulty; Exponential f(x); Constant Hazard</li>
+              <li>Increasing Difficulty; Rayleigh Distribution; Linear Hazard</li>
+              <li>Weibull Distribution; Power-Law Hazard</li>
+            </ol>
+          </li>
+          <li>
+            Exploring Game Space
+            <ul>
+              <li>
+                How to visualize?
+                <ol>
+                  <li>Only 1 varying variable vs hazard</li>
+                  <li>Two varying variable vs hazard</li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+        </ul>
+    <a href="../index.html">Go back to main page</a>
+  </body>
+</html>

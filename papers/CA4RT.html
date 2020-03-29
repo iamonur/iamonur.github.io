@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cellular Automata for Real-Time Generation of Infinite Cave Levels</title>
+  </head>
+  <body>
+    <h1>Document</h1>
+      <a href="https://dl.acm.org/doi/abs/10.1145/1814256.1814266">Paper here!<a>
+    <h1>Notes</h1>
+      <h2>My own footnotes</h2>
+        <ol>
+          <li>I cannot see any connection to our research in this paper. I'm moving on to the next one.</li>
+        </ol>
+      <h2>A brief summary</h2>
+        <ul>
+          <li>
+            Abstract
+            <ul>
+              <li>Uses cellular automata for PCG since it is computationally efficient. Thus, CA can run real-time.</li>
+            </ul>
+          </li>
+          <li>
+            Introduction
+            <ul>
+              <li>Some kind of games require real-time generation of levels (ie rogue-like ones.)</li>
+              <li>Since CA-PCG is inexhaustable, levels become less predictable.</li>
+              <li>If PCG is used in level generation, levels become parameterazible.</li>
+              <li>Also, PCG can be used as a guidline for human level-designers.</li>
+            </ul>
+          </li>
+          <li>
+            Background
+            <ol>
+              <li>
+                One common algorithm is Mid-point Displacement:
+                <ul>
+                  <li>It's easy to implement and computationally efficient.</li>
+                  <li>
+                    It is highly indirect
+                    <ul>
+                      <li>Only parameter it takes is a random seed.</li>
+                      <li>It is not controllable, so it is not a good approach for PCG.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Another one is Search-Based PCG(SBPCG):
+                <ul>
+                  <li>Consumes lots of computational power.</li>
+                  <li>Highly controllable.</li>
+                </ul>
+              </li>
+              <li>
+                CA for PCG:
+                <ul>
+                  <li>This is the first example of it in academy. From what I see, it is both controllable enough and computationally efficient.</li>
+                </ul>
+              </li>
+            </ol>
+          </li>
+          <li>
+            CA-PCG Approach
+            <ul>
+              <li>Initial grid is called base.</li>
+              <li>4 neighbors for basic CA, 8 for advanced. Also you can increase it to 24, for 2 unit distance; or 48 for 3 unit distance, etc.</li>
+              <li>
+                This is how the generation works
+                <ol>
+                  <li>Initialize the level empty.</li>
+                  <li>Change r% of the level to rock(R=50 by default.)</li>
+                  <li>
+                    Iterate Cellular Automata n times.
+                    <ol>
+                      <li>Calculate "Neighborhood Value" for every cell</<li>
+                      <li>If NV is less than T (T=5 by default), make this cell a "floor"</li>
+                      <li>Else, makes this cell a rock.</li>
+                    </ol>
+                  </li>
+                  <li>Draw a wall around rocks.</li>
+                </ol>
+              </li>
+              <li>Given the same parameter set(random seed, r, n, T, and M(Moore Neighborhood Size)), the same level can be reconstructed.</li>
+            </ul>
+          </li>
+          <li>
+            Maps with different parameters are presented are presented in the paper.
+          </li>
+        </ul>
+    <a href="../index.html">Go back to main page</a>
+  </body>
+</html>

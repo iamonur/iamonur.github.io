@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Automated level generation and difficulty rating for Trainyard</title>
+  </head>
+  <body>
+    <h1>Document</h1>
+      <a href="https://dspace.library.uu.nl/handle/1874/286943">Paper here!<a>
+    <h1>Notes</h1>
+      <h2>My own footnotes</h2>
+        <ol>
+          <li>I cannot see any connection to our research in this paper. I'm moving on to the next one.</li>
+        </ol>
+      <h2>A brief summary</h2>
+          <ul>
+            <li>Trainyard is a transport puzzle game. Here is a video down below:</li>
+            <li><a href="https://www.youtube.com/watch?v=xWtIb7NEYgM">Video here!</a></li>
+            <li>Here's the whole pipeline of them:</li>
+            <img src="All pipeline.PNG"></img>
+            <li>Level Generator:
+              <ul>
+                <li>Mission Generator: Determines the stations and trains to be used by color and count.</li>
+                <li>Grid Placement: Makes sure that every station is reachable by the corresponding train. However, this is not enough to say the level is solvable.</li>
+                <li>Here is how the level generator works:</li>
+                <img src="Level generator.PNG"></img>
+              </ul>
+            </li>
+            <li>Level Solver: Truly checks if a level is solvable by trying one-by-one. If it is solvable, records the easiest solution of it. Here's how level solver works:</li>
+            <img src="Level Solver.PNG"></img>
+            <li>Difficulty Estimation: Difficulty is tied up to 5 different factors listed below(All weights are calculated from a user study):
+              <ol>
+                <li>Stations(weighted 0.1601): Number of stations increase difficulty.</li>
+                <li>Trains(weighted 0.1126): Difference between start and end number of trains increase difficulty.</li>
+                <li>Colors(weighted 0.2194): Symmetric difference between the start and the end colors mean switching should be made for every time and this increases difficulty.</li>
+                <li>Tracks(weighted 0.4267): Number of switches in the simplest solution increases difficulty.</li>
+                <li>Grid(weighted 0.1177): Empty grid space to be worked on to solve the level increases difficulty.</li>
+              </ol>
+            </li>
+          </ul>
+    <a href="../index.html">Go back to main page</a>
+  </body>
+</html>
