@@ -9,7 +9,7 @@
     <h1>Notes</h1>
       <h2>My own notes</h2>
         <ol>
-          <li></li>
+          <li>I do not think this paper is related to what we achieve since it is </li>
         </ol>
       <h2>A brief summary</h2>
         <ul>
@@ -21,18 +21,37 @@
           </li>
           <li>
             Introduction
-          </li>
-          <li>
-            Related Work
+            <ul>
+              <li>PCG is used in order to generate fast and reliable levels, variable content, and player-centric content.</li>
+              <li>However, to benefit from the things above, PCG should be controllable.</li>
+              <li><b>Gampelay grammar:</b> Designer-expressed constraints for level.</li>
+              <li><b>Action graph:</b> Gameplay grammar + graph of player actions.</li>
+              <li>To demonstrate, dungeon levels are used. Dungeons are RPG levels, consist of sequences of challanges.</li>
+            </ul>
           </li>
           <li>
             Gamplay Grammars
+            <ul>
+              <li>Typically, the geometry and content of the game follows gameplay requirements.</li>
+              <li>Gameplay grammars include an action(eg fighting) and sequencing, relationship and content(eg fighting a dragon)</li>
+              <li>Gameplay is a set of actions that can be performed by the player in game.</li>
+              <li>Actions can compose in order to create another actions.</li>
+              <li><b>Example:</b> Acquire key = Kill an enemy -> Loot key from body</li>
+              <li><b>Example:</b> Enter locked chamber = (Acquire key -> Unlock door -> Move through doorway) || (Climb on roof -> Enter chimney)</li>
+              <li>Also, it is possible to create conditional actions.</li>
+              <li><b>Example:</b> Acquire key = if difficulty is 25: ((Kill enemy -> Loot key from body)||(Distract enemy -> steal key)), else:(Check under doormat -> pickup key)</li>
+              <li>After expressing design constraints, you need to create a graph of actions starting from an initial one.</li>
+              <img src="actionGraph.png"></img>
+            </ul>
           </li>
           <li>
             Case Study: Dwarf Quest
-          </li>
-          <li>
-            Results and Discussion
+                <ol>
+                  <li>Space assignment converts nodes into rooms.</li>
+                  <li>Layout pre-processing converts the graph into a planar graph, and reduces edges to a maximum of 4.</li>
+                  <li>Layout solving creates an orthagonal graph from the planar graph. This is the 2D grid map.</li>
+                  <li>Layout post-processing optimizes the grid map (ie reduce too long hallways).</li>
+                </ol>
           </li>
         </ul>
     <a href="../index.html">Go back to main page</a>
