@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Self-referencing cellular automata: A model of the evolution of information control in biological systems</title>
+
+  </head>
+
+  <body>
+
+    <h1>Document</h1>
+
+      <a href="https://arxiv.org/abs/1405.4070v1">Paper here!</a>
+
+    <h1>Notes</h1>
+
+      <h2>My own notes</h2>
+
+        <ol>
+
+          <li></li>
+
+        </ol>
+
+      <h2>A brief summary</h2>
+
+        <ul>
+
+          <li>
+
+            Abstract
+
+            <ul>
+
+              <li>Cellular Automata(CA) is useful for exploring how simple rules and spatial memory creates complex patterns</li>
+
+              <li>Conventional CA lacks state feedback. However, in natural evolution, we observe such property.</li>
+
+              <li>In this study, a state-dependent feedback mechanism is implemented on CA.</li>
+
+              <li>Unlike conventional CA, which have an initial condition and a static ruleset; these CA's rules are extracted from the last generation.</li>
+
+              <li>At the end of simulations, it is seen that these automata contain disconnected regions that are like conventional CA.</li>
+
+            </ul>
+
+          </li>
+
+          <li>
+
+            Introduction
+
+            <ul>
+
+              <li>
+                There is another kind of evolutionary computation on CA, called EvCA(Evolving cellular automata).
+                TODO: LOOK UP TO EvCA.
+                <ul>
+                  <li>In EvCA, there is no feedback in the fitness channel. Evolution does not change the fitness function, so evolution goes to a singular target.</li>
+                  <li>In life, evolving creatures create a history and changes the environment. Thus, a generation affects the next one.</li>
+                </ul>
+              </li>
+
+              <li>In order to fill the hole in EvCA, PICARD is introduced.(PICARD = PICARD Implements CA Rules Differently)</li>
+              <li>Like any CA, PICARD also implements a rule for moving one generation to another. However, this rule is not static and externally specified, but derived from current state of CA.</li>
+              <li>Since a PICARD behaves differently for different initial conditions, it could behave like any other CA for different initial conditions.</li>
+            </ul>
+
+          </li>
+
+          <li>
+            Cellular Automata with PICARD Mappings
+            <ul>
+              <li>Although PICARD implements CA rules differently, the same rule is iterated in the same way.</li>
+              <li>Difference of a PICARD wrt CA is , there is no static rule in PICARD. Instead, a mapping is done to a row to its rule to be operated on.</li>
+              <li>
+                Some example aggregation PICARD mappings:
+                <ol>
+                  <li>
+                    Sum of ones: Total number of 1s are implemented as the rule. Since there are 24 cells used, 25 rules in total can appear in range of 0-24.
+
+                  </li><img src="sum_of_ones.png"></img>
+                  <li>
+                    Density of ones: (Total number of 1s/Total number of cells)*255. Also here, 25 rules in total can be generated in range of 0-255.
+
+                  </li><img src="density_of_ones.png"></img>
+                </ol>
+              </li>
+
+              <li>
+                Some examples of block PICARD mappings:
+                <ol>
+                  <li>
+                    Block ones majority: If a 3-block has majority of 1's, the rule bit corresponding to it is 1. All 255 rules are reachable.
+
+                  </li><img src="block_ones_majority.png"></img>
+                  <li>
+                    Block ones odd parity: If a 3-block has odd numbers of 1's, the rule bit corresponding to it is 1. All 255 rules are reachable.
+
+                  </li><img src="block_ones_odd_parity.png"></img>
+                  <li>
+                    Block transition odd parity: If a 3-block has odd number of transitions, the rule bit corresponding to it is 1. All 255 rules are reachable.
+
+                  </li><img src="block_transition_odd_parity.png"></img>
+                </ol>
+              </li>
+              <li>
+                An example of permutational PICARD mapping:
+                <ol>
+                  <li>
+                    Block transition odd parity with mid-nybble-switch: Same as Block transition odd parity, but bit 1 switches with 2, bit 5 switches with 1.
+
+                  </li><img src="perm.png"></img>
+                </ol>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            A PICARD Case Study
+            <ul>
+              <li>
+                With different starters, lots of simulations performed. Mapping used here is block transition odd parity with mid-nybble-switch. Here are some patterns observed:
+                <ol>
+                  <li>
+                    Mutual oscillation
+
+                  </li><img src="mut_osc.png"></img>
+                  <li>
+                    Mutual fixed points
+
+                  </li><img src="mut_fixed.png"></img>
+                  <li>
+                    Oscillating microstate with fixed rule
+
+                  </li><img src="osc_fixed.png"></img>
+                </ol>
+                <ol>
+                  <li>
+                    Short transition
+
+                  </li><img src="short_trans.png"></img>
+                  <li>
+                    A long transient that ends up with rule 0.
+
+                  </li><img src="long_0.png"></img>
+                </ol>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+
+  </body>
+
+</html>
