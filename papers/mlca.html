@@ -55,7 +55,57 @@
             <ul>
               <li>CCA is presented as a classifier.</li>
               <li>Each cell can contain a classifier, and a state according to its classification of an input sample. This state can be same as the sample's class, a different class, or a "cannot be classified.".</li>
-              
+              <li>
+                The learning algorithm:
+                <ul>
+                  <li>Input: Learning set with N learning samples</li>
+                  <li>Number of iterations: t=1,...T</li>
+                  <li>For t=1,2,...T:</li>
+                </ul>
+                <ol>
+                  <li>Choose a learning sample I</li>
+                  <li>Each cell in the automaton classifies I</li>
+                  <li>Change cells' energies according to transaction rules</li>
+                  <li>If energy of a cell is below zero -> It is dead.</li>
+                  <li>Fill dead cells with random new ones.</li>
+                </ol>
+                Energy of the cell is reflecting succesfulness of classification. Each neighborhood cell influences the energy of the current cell. score = support.confidence.distance; eqScore = sum of scores of all neighbors that has the same classification; noClassScore = sum of scores of neighbors that cannot clasify.
+                <ul>
+                  <li>
+                    If a cell has the same classification as the sample class:
+                    <ul>
+                      <li>If noClassScore > 0: e += ( 100 - eqScore * 100 / noClassScore )</li>
+                      <li>Else: e += 400</li>
+                    </ul>
+                  </li>
+                  <li>
+                    If a cell differs from sample class:
+                    <ul>
+                      <li>If noClassScore > 0: e -= ( 100 - eqScore * 100 / noClassScore )</li>
+                      <li>Else: e -= 100</li>
+                    </ul>
+                  </li>
+                  <li>
+                    If a cell cannot clasify the sample: e -= 10
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Inference algorithm:
+                <ul>
+                  <li>Input: A sample for classification</li>
+                  <li>Number of iterations: t=1,2,...V</li>
+                  <li>
+                    For t=1,2,...V:
+                    <ol>
+                      <li>Each cell in automaton classifies.</li>
+                      <li>Change energies of cells.</li>
+                      <li>Cells with negative energy will die.</li>
+                    </ol>
+                  </li>
+                  <li>Classify the sample with weighted voting of surviving cells.</li>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>
