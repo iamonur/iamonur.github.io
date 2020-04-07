@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Self-Adaptive Games for Rehabilitation at Home</title>
+  </head>
+  <body>
+    <h1>Document</h1>
+    <h1>Notes</h1>
+      <h2>My own notes</h2>
+        <ol>
+          <li></li>
+        </ol>
+      <h2>A brief summary</h2>
+        <ul>
+          <li>
+            Abstract
+            <ul>
+              <li>Rehabilitation games should be nicely integrated in stations, adhere constraints of clinical protocols, involve goal-oriented movements, and adapt patient's current progress.</li>
+              <li>Current games rarely adapt to patient's condition.</li>
+              <li>A new station is developed that employs a fuzzy system to monitor the exercises, according to medical constraints, that provides feedback to the patients.</li>
+            </ul>
+          </li>
+          <li>
+            Introduction
+            <ul>
+              <li>Commercial motion-sensing game controllers have huge potential in rehabilitation.</li>
+              <li>Rehabilitation games designed for these should be adjustable for patient and therapy goals.</li>
+            </ul>
+          </li>
+          <li>
+            A Hierarchical Platform for Rehabilitation at Home
+            <ul>
+              <li>IGER: Intelligent Game Engine for Rehabilitation.</li>
+              <li>The goal of the project is low-cost game-oriented platform that can be used in home.</li>
+              <li>Platform includes a patient station, hospital station, and a networking station (PS, HS, NS)</li>
+            </ul>
+          </li>
+          <li>
+            The Game System
+            <ul>
+              <li>Two components: Game engine and the game control unit.</li>
+              <li><b>Game engine:</b> Gaming functionalities.</li>
+              <li><b>Game control unit:</b> Matches needs of games for rehabilitation.</li>
+            </ul>
+          </li>
+          <li>
+            Fuzzy-Based Monitoring
+            <ul>
+              <li>The adequacy of the actual game parameters can be inferred by measuring the hit ratio inside the game.</li>
+              <li>This ratio can be associated with the subjective difficulty of the game for a given patient.</li>
+              <li>2 different algorithms are implemented for DDA.</li>
+              <li>First depends on performance of the patient in one repetition. Before game starts, the n game parameters can be adapted, and a target performance is set. After the repetition, real performance is computed from the hit ratio. If P_r > P_d, difficulty is increased. If P_r < P_d, difficulty is reduced.</li>
+              <li>Second is built upon Quest Bayesian method. Works real-time. It is not level-based, it is trial-based. Each trial is either a pass or hit (binary). To adapt safely, define PDF of parameter x, f(x). 3 assumptions: Performance function always have the same shape, patient threshold should not vary between trials, and individual trials are statistically independent. Quest function is: Q(x) = f_x(x)*f_D|x(D|x) = f_x(x)*( PI ( p_ri|x(x_i), i=1 to n))</li>
+            </ul>
+          </li>
+          <li>
+            Bayesian-Based in-Game Adaptation
+          </li>
+          <li>
+            A Self-Adaptive Rehabilitation Game
+          </li>
+          <li>
+            Discussion
+          </li>
+          <li>
+            Conclusion
+          </li>
+        </ul>
+    <a href="../index.html">Go back to the main page</a>
+  </body>
+</html>
