@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Automatic Generation of Diverse Cavern Maps with Morphing Cellular Automata</title>
+</head>
+<body>
+  <h1>Document</h1>
+  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8847947">Paper here!</a>
+  <h1>Notes</h1>
+  <h2>My own notes</h2>
+    <ol><li></li></ol>
+  <h2>A brief summary</h2>
+    <ul>
+      <li>
+        Abstract
+        <ul>
+          <li>CA is used for rapid generation of complex images. But it is hard to control.</li>
+          <li>Here is a fashion-based CA that generates cavern-like level maps.</li>
+        </ul>
+      </li>
+      <li>
+        Introduction
+        <ul>
+          <li>Morphing: The continuous change of the CA rule across space. Rules for the CA in this study take the form of square matrices, called competition matrices.</li>
+          <li>If two different competition matrices exist, LAMBDA * M + (1 - LAMBDA) * N is a matrice space. During generation, lambda shifts continuously.</li>
+        </ul>
+      </li>
+      <li>
+        Background
+        <ul>
+          <li>In this study, cell space is 101x101. Grid is considered toroidal, 0 and 100 is neighbors. </li>
+        </ul>
+      </li>
+      <li>
+        Design of Experiments
+        <ul>
+          <li>ALPHA = Desired density. BETA = Actual density. Density Modifier = 1 / ((ALPHA - BETA)^2 + 0.4)</li>
+          <li>Diversity modifier is basic fitness and entropy multiplied. Diversity Modifier = - SUM(p_i * log2(p_i) , i = 0 to i = n-1)</li>
+          <li>Angular modifier. To be honest, it is too hard for me to understand this.</li>
+          <li>fitness = Density modifier * Diversity modifier * Angular modifier * Total path length</li>
+        </ul>
+      </li>
+      <img src="different_lambdas.png"></img>
+    </ul>
+</body>
+</html>
