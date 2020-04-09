@@ -5,6 +5,7 @@
   </head>
   <body>
     <h1>Document</h1>
+      <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6374154">Paper here!</a>
     <h1>Notes</h1>
       <h2>My own notes</h2>
         <ol>
@@ -33,6 +34,7 @@
               <li>IGER: Intelligent Game Engine for Rehabilitation.</li>
               <li>The goal of the project is low-cost game-oriented platform that can be used in home.</li>
               <li>Platform includes a patient station, hospital station, and a networking station (PS, HS, NS)</li>
+              <img src="IGER_diagram.png"></img>
             </ul>
           </li>
           <li>
@@ -46,18 +48,46 @@
           <li>
             Fuzzy-Based Monitoring
             <ul>
-              <li>The adequacy of the actual game parameters can be inferred by measuring the hit ratio inside the game.</li>
-              <li>This ratio can be associated with the subjective difficulty of the game for a given patient.</li>
-              <li>2 different algorithms are implemented for DDA.</li>
-              <li>First depends on performance of the patient in one repetition. Before game starts, the n game parameters can be adapted, and a target performance is set. After the repetition, real performance is computed from the hit ratio. If P_r > P_d, difficulty is increased. If P_r < P_d, difficulty is reduced.</li>
-              <li>Second is built upon Quest Bayesian method. Works real-time. It is not level-based, it is trial-based. Each trial is either a pass or hit (binary). To adapt safely, define PDF of parameter x, f(x). 3 assumptions: Performance function always have the same shape, patient threshold should not vary between trials, and individual trials are statistically independent. Quest function is: Q(x) = f_x(x)*f_D|x(D|x) = f_x(x)*( PI ( p_ri|x(x_i), i=1 to n))</li>
+              <li>There are 4 different function for all parameters: OK, risky, bad, wrong. Total of these 4 in any point will be equal to 1.</li>
+              <img src="fuzzy-1.png"></img>
+              <li>From these functions, 5 different severity(alarm) levels are computated:Silent, Log, Warning, Error, and Shotdown. Also total of these in any point is 1.</li>
+              <img src="fuzzy-2.png"></img>
             </ul>
           </li>
           <li>
             Bayesian-Based in-Game Adaptation
+            <ul>
+              <li>The adequacy of the actual game parameters can be inferred by measuring the hit ratio inside the game.</li>
+              <li>This ratio can be associated with the subjective difficulty of the game for a given patient.</li>
+              <li>2 different algorithms are implemented for DDA.</li>
+              <li>First depends on performance of the patient in one repetition. Before game starts, the n game parameters can be adapted, and a target performance is set. After the repetition, real performance is computed from the hit ratio.
+                <ul>
+                  <li>If P_r > P_d, difficulty is increased.</li>
+                  <li>If P_r < P_d, difficulty is reduced.</li>
+                </ul>
+              </li>
+              <li>Second is built upon Quest Bayesian method. Works real-time. It is not level-based, it is trial-based. Each trial is either a pass or hit (binary). To adapt safely, define PDF of parameter x, f(x).
+                3 assumptions:
+                <ol>
+                  <li>Performance function always have the same shape</li>
+                  <li>Patient threshold should not vary between trials</li>
+                  <li>Individual trials are statistically independent.</li>
+                </ol>
+                <ul>
+                  <li>Quest function is: <b>Q(x) = f_x(x)*f_D|x(D|x) = f_x(x)*( PI ( p_ri|x(x_i), i=1 to n))</b>.</li>
+                  <li>Also we can develop cannonical function <b>PHI(x_i - x) = p_x(x_i)</b>.</li>
+                  <li>With the help of cannonical function, we can develop success and failure functions: <b>S(x_i) = PHI(-x_i), F(x_i) = 1 - PHI(-x_i)</b>.</li>
+                  <li>That makes the QUEST function: <b>Q_i(x) = Q_(i-1)(x) * S(x - x_i)[IF SUCCESS] Q_i(x) = Q_(i-1)(x) * F(x - x_i)[IF FAILURE]</b>.</li>
+                </ul>
+                Also, as the PDF, Weibull function is selected.</li>
+            </ul>
           </li>
           <li>
             A Self-Adaptive Rehabilitation Game
+            <ul>
+              <li>Fruit catcher is a Kinect game.</li>
+              <li>Can be used in two different rehabilitation scenarios: Weight Shifting and Stepping.</li>
+            </ul>
           </li>
           <li>
             Discussion
