@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Improving Procedural 2D Map Generation Based On Multi-Layered Cellular Automata and Hilber Curves</title>
+  </head>
+  <body>
+    <h1>Document</h1>
+      <a href="https://www.sbgames.org/sbgames2017/papers/ComputacaoFull/175350.pdf">Paper here!</a>
+    <h1>Notes</h1>
+      <h2>My Own Notes</h2>
+      <h2>A Brief Summary</h2>
+        <ul>
+          <li>
+            Abstract
+            <ul>
+              <li>PCG and CA is a growing pair in gaming industry and academy.</li>
+              <li>Games are becoming re-playable with PCG via infinite amount of levels.</li>
+              <li>Space-filling curves here implemented with CA for mallable levels.</li>
+            </ul>
+          </li>
+          <li>
+            Introduction
+            <ul>
+              <li>Big game companies have limited time, indie developers don't have the resources to hand-generate all levels. Thus, PCG has gained importance over time.</li>
+              <li>PCG is a trade-off between re-playability, control and resources.</li>
+            </ul>
+          </li>
+          <li>
+            Background
+            <ul>
+              <li>
+                Cellular Automata
+                <ul>
+                  <li>Multi-Layered CA: A set of CA that feeds on each others' outputs.</li>
+                  <li>Synchronous vs. Asynchronous Updating: One is freeze-then-update, other is update cell-by-cell.</li>
+                </ul>
+              </li>
+              <li>
+                Space-Filling Curves
+                <ul>
+                  <li>Curves whose range contains all the achievable space within a discrete n-dimensional space.</li>
+                  <li>A thread that visits every cell exactly once. Hilbert curves is one of them.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Methodology
+            <ul>
+              <li>
+                Cellular Automata
+                <ul>
+                  <li>An NxM grid, true or false states, r=1 Moore neighborhood.</li>
+                  <li>4 neighbors are true -> No change to state</li>
+                  <li>4+ neighbors are true -> Change to true</li>
+                  <li>4- neighbors are true -> Change to false</li>
+                </ul>
+              </li>
+            </ul>
+            <ol>
+              <li>Plot: Generate a Hilbert Curve even if M != N with respect to a, where a = MAX(M, N)</li>
+              <li>Scale: Rescaling Hilbert Curve with an integer "1 < S < a"</li>
+              <li>Shift: Choose a random NxM from all scaled S(NxM).</li>
+              <li>Trace: Connect loose ends of the shifted curve to provide a connected curve.</li>
+              <li>Imprint: Serve the grid to next step.</li>
+              <li>Secure Negative Space: Create negative space curves, that shows movable space on the level.</li>
+              <li>Rotate: Rotate the level with a certain angle. Do not let any part of the level disappear.</li>
+              <li>Shift: You can warp lines, without breaking or moving out of cells.</li>
+              <li>Iterate: Use CA on it to give it a different look.</li>
+              <img src="img/HilbertPipeline.png"></img>
+            </ol>
+          </li>
+        </ul>
+        <a href="../index.html">Go back to the main page.</a>
+  </body>
+</html>
