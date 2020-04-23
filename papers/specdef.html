@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Procedurally Generating Game Levels with Specified Difficulty</title>
+  </head>
+  <body>
+    <h1>Document</h1>
+      <a href="https://ieeexplore.ieee.org/document/8516274">Paper here!</a>
+    <h1>Notes<h1>
+      <h2>My own notes</h2>
+        <ol>
+          <li></li>
+        </ol>
+      <h2>A brief summary</h2>
+      <ul>
+        <li>
+          Abstract
+          <ul>
+            <li>Pac-Man levels generated at specific difficulties with respect to number of intersections and elements given.</li>
+            <li>Also used an aesthetic score to check if the maze is Pac-Man worthy.</li>
+          </ul>
+        </li>
+        <li>
+          Introduction
+          <ul>
+            <li>99% of the levels produced are playable.</li>
+            <li>40ms generation time.</li>
+          </ul>
+        </li>
+        <li>
+          Methodology
+          <ol>
+            <li>
+              Metrics for a Pac-Man game
+              <ul>
+                <li>Ghost house</li>
+                <li>Maze</li>
+                <li>Pills & Power Pills</li>
+                <li>Positioning of the Sprites</li>
+              </ul>
+            </li>
+            <li>
+              Framework</li>
+              <img src="img/pacman_framework.png"></img>
+            <li>Difficulty vs Intersections</li>
+              <img src="img/pacman_difficulties.png"></img>
+            <li>
+              Maze Generation
+              <ol>
+                <li>Grid Preperation: 31x29 grid, same as the original Ms. Pac-Man.</li>
+                <li>
+                  Left Graph
+                  <ul>
+                    <li>Place the ghost house</li>
+                    <li>Place the walls, with height of 2 or 3. Left first, up then, low at the end.</li>
+                    <li>Eliminate adjacent nodes. Two nodes, and no edge between them => merge two nodes.</li>
+                  </ul>
+                </li>
+                <li>
+                  Grow From Intersections
+                  <ol>
+                    <li>Grow from ghost house's intersections.</li>
+                    <li>Grow from cornet intersections.</li>
+                    <li>Uniformly choose from remaining intersections to grow from.</li>
+                    <li>Set pac-man starting point.</li>
+                  </ol>
+                </li>
+                <li>
+                  Connecting intersections
+                  <ul>
+                    <li>Ignore tunnel grown from ghost house.</li>
+                    <li>Connect tunnels and intersections.</li>
+                    <li>Connect dead ends.</li>
+                    <li>Repeat until left graph is fully connected.</li>
+                  </ul>
+                </li>
+                <li>
+                  Connect remaining dead ends.
+                </li>
+                <li>
+                  Setup Portals
+                  <ul>
+                    <li>If dead ends can be connected to the left-most border,do it and place a portal at the end.</li>
+                    <li>If no portal can be placed, randomly grow a node to generate at least one.</li>
+                  </ul>
+                </li>
+                <li>
+                  Maze Refinement: Reduce 2x2 walls as much as possible.
+                </li>
+                <li>
+                  Setup pills & power pills
+                </li>
+                <li>
+                  Mirror maze to right.
+                </li>
+                <li>
+                  Setup important locations.
+                </li>
+              </ol>
+            </li>
+            <li>
+              Quality Assurance
+              <ol>
+                <li>
+                  Difficulty Evaluation
+                  <b>Diff = Weighted sum of (# of Risk tunnels, # of Tunnels, # of Intersections, # of T-Intersections, and # of Pills with Maze size.)</b>
+                </li>
+                <li>
+                  Aesthetic Score
+                  <b>Aest = Weighted sum of (Maze area, # of corridors, st. dev. of the block size, st. dev. of the distance between intersections, st. dev. of the distribution of intersections, st. dev. of the distribution of T-Intersections.)</b>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ul>
+  </body>
+</html>
