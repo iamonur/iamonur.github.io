@@ -1,0 +1,60 @@
+:root {
+  /* Surfaces */
+  --color-bg: oklch(13% 0.014 280);
+  --color-surface: oklch(17% 0.017 280);
+  --color-surface-2: oklch(21% 0.02 280);
+  --color-border: oklch(32% 0.02 280 / 60%);
+  --color-border-strong: oklch(45% 0.03 280 / 70%);
+
+  /* Text */
+  --color-text: oklch(96% 0.006 280);
+  --color-text-muted: oklch(74% 0.014 280);
+  --color-text-faint: oklch(55% 0.014 280);
+
+  /* Accent gradient: violet -> magenta -> amber */
+  --color-accent: oklch(72% 0.2 305);
+  --color-accent-2: oklch(78% 0.17 25);
+  --gradient-accent: linear-gradient(120deg, var(--color-accent), var(--color-accent-2));
+  --gradient-accent-soft: linear-gradient(160deg, oklch(72% 0.2 305 / 22%), oklch(78% 0.17 25 / 14%));
+
+  /* Type families */
+  --font-display: "Fraunces", "Iowan Old Style", "Georgia", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Type scale */
+  --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.84rem + 0.15vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);
+  --text-xl: clamp(1.4rem, 1.25rem + 0.7vw, 1.85rem);
+  --text-2xl: clamp(1.9rem, 1.6rem + 1.4vw, 2.75rem);
+  --text-hero: clamp(3rem, 1.9rem + 5.2vw, 6.5rem);
+
+  /* Spacing rhythm */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: clamp(3rem, 2.4rem + 2.8vw, 5.5rem);
+  --space-section: clamp(5rem, 3.5rem + 7vw, 9rem);
+
+  /* Radii */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 320ms;
+  --duration-slow: 600ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --content-width: 1180px;
+  --shadow-card: 0 1px 1px oklch(0% 0 0 / 20%), 0 12px 32px -12px oklch(0% 0 0 / 55%);
+  --shadow-card-hover: 0 1px 1px oklch(0% 0 0 / 25%), 0 24px 48px -16px oklch(0% 0 0 / 65%);
+}
